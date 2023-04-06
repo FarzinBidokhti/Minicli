@@ -1,0 +1,19 @@
+{
+    "name": "synon/minicli",
+    "description": "Sample mini cli.",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Farzin Bidokhti"
+        }
+    ],
+    "autoload": {
+      "psr-4": {
+        "Minicli\\": "lib/",
+        "App\\": "app/"
+      }
+    },
+    "minimum-stability": "dev",
+    "require": {}
+}
