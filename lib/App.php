@@ -6,7 +6,7 @@ class App
 {
     protected $printer;
 
-    protected $registry = [];
+    protected $registry = ['say:hello' => 'welcome', 'help' => 'help'];
 
     public function __construct()
     {
@@ -18,9 +18,22 @@ class App
         return $this->printer;
     }
 
-    public function registerCommand($name, $callable)
+    public function runCommand(array $argv = [])
     {
-        $this->registry[$name] = $callable;
+        $commandName = "help";
+
+        if (isset($argv[1])) {
+            $commandName = $argv[1];
+        }
+
+        $command = $this->getCommand($commandName);
+
+        if ($command === null) {
+            $this->getPrinter()->display("ERROR: Command \"$commandName\" not found.");
+            exit;
+        }
+
+        call_user_func(array($this, $command), $argv);
     }
 
     public function getCommand($command)
@@ -28,20 +41,14 @@ class App
         return isset($this->registry[$command]) ? $this->registry[$command] : null;
     }
 
-    public function runCommand(array $argv = [])
+    protected function welcome($arg)
     {
-        $command_name = "help";
+        $arg = isset($arg[2]) ? $arg[2] : "null";
+        $this->getPrinter()->display("Result:: $arg");
+    }
 
-        if (isset($argv[1])) {
-            $command_name = $argv[1];
-        }
-
-        $command = $this->getCommand($command_name);
-        if ($command === null) {
-            $this->getPrinter()->display("ERROR: Command \"$command_name\" not found.");
-            exit;
-        }
-
-        call_user_func($command, $argv);
+    protected function help($arg)
+    {
+        $this->getPrinter()->display("Run:: php satrun say:hello Farzin");
     }
 }
