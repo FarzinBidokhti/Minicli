@@ -6,6 +6,7 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
-    'Minicli\\' => array($baseDir . '/lib'),
+    'Lib\\' => array($baseDir . '/lib'),
+    'Bramus\\Ansi\\' => array($vendorDir . '/bramus/ansi-php/src'),
     'App\\' => array($baseDir . '/app'),
 );

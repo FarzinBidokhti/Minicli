@@ -7,9 +7,13 @@ namespace Composer\Autoload;
 class ComposerStaticInitdd66ada9b34e599627d51c061ea4cc52
 {
     public static $prefixLengthsPsr4 = array (
-        'M' => 
+        'L' => 
         array (
-            'Minicli\\' => 8,
+            'Lib\\' => 4,
+        ),
+        'B' => 
+        array (
+            'Bramus\\Ansi\\' => 12,
         ),
         'A' => 
         array (
@@ -18,9 +22,13 @@ class ComposerStaticInitdd66ada9b34e599627d51c061ea4cc52
     );
 
     public static $prefixDirsPsr4 = array (
-        'Minicli\\' => 
+        'Lib\\' => 
         array (
             0 => __DIR__ . '/../..' . '/lib',
+        ),
+        'Bramus\\Ansi\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/bramus/ansi-php/src',
         ),
         'App\\' => 
         array (

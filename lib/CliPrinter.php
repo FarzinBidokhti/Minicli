@@ -1,23 +1,29 @@
 <?php
 
-namespace Minicli;
+namespace Lib;
+
+use Lib\Exception;
+use \Bramus\Ansi\Ansi;
+use \Bramus\Ansi\Writers\StreamWriter;
+use \Bramus\Ansi\ControlSequences\EscapeSequences\Enums\SGR;
 
 class CliPrinter
 {
-    public function out($message)
-    {
-        echo $message;
-    }
+    protected $ansi;
 
-    public function newline()
+    public function __construct()
     {
-        $this->out("\n");
+        $this->ansi = new Ansi(new StreamWriter('php://stdout'));
     }
 
     public function display($message)
     {
-        $this->newline();
-        $this->out($message);
-        $this->newline();
+
+        $this->ansi->color(array(SGR::COLOR_FG_WHITE, SGR::COLOR_BG_GREEN))
+            ->blink()
+            ->text($message)
+            ->nostyle()
+            ->lf()
+            ->bell();
     }
 }

@@ -10,10 +10,12 @@
     ],
     "autoload": {
       "psr-4": {
-        "Minicli\\": "lib/",
+        "Lib\\": "lib/",
         "App\\": "app/"
       }
     },
     "minimum-stability": "dev",
-    "require": {}
+    "require": {
+        "bramus/ansi-php": "dev-master"
+    }
 }
